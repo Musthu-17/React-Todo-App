@@ -1,0 +1,126 @@
+.App {
+  text-align: left;
+}
+
+.App{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: auto;
+  padding: 0;
+  background-color: #653780;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container{
+  width: 400px;
+  height: 500px;
+  background-color: #d4cfd1;
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+#input{
+  width: 280px;
+  height: 50px;
+  border: none;
+  background: none;
+  margin-left: 40px;
+  outline: none;
+  text-align:  left;
+}
+
+
+
+#submit{
+  height: 50px;
+  width: 100px;
+  background-color: #f89f5b;
+  border-radius: 30px;
+  border:none;
+}
+
+#submit:hover{
+  background-color: #f9af76;
+}
+
+.addtask{
+  width: 350px;
+  height: 50px;
+  background-color: #c6c2c3;
+  border-radius: 30px;
+  border:none;
+  position: relative;
+  top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.todos{
+  width: 340px;
+  height: 310px;
+  border: none;
+  background:none;
+  margin-top: 30px;
+  display:flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.task{
+  list-style-type: none;
+  display: flex;
+  background: none;
+  width: 330px;
+  position: relative;
+  right: 30px;
+  border-bottom: 1px solid grey;
+  align-items: center;
+}
+
+.line{
+  width: 340px;
+  height: 1px;
+  position: relative;
+  top: 35px;
+  background-color: black
+}
+
+.trash{
+  margin-left: 0px;
+  border-radius: 100%;
+  border: 0.5px solid transparent;
+  background-color: none;
+  padding: 5px;
+}
+
+.trash:hover{
+  border-color: rgb(188, 188, 188);
+  background-color: rgb(188, 188, 188);
+}
+
+#label{
+  flex-grow: 1;
+}
+
+.check{
+  margin-left: 0px;
+  border-radius: 100%;
+  border: 0.5px solid transparent;
+  background-color: none;
+  padding: 5px;
+}
+
+.check:hover{
+  border-color: rgb(188, 188, 188);
+  background-color: rgb(188, 188, 188);
+  
+}
+
