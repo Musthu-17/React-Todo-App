@@ -19,7 +19,7 @@ function Todo(){
   //to add and remove tasks
   const [arr,setArr]=useState([])
   //to switch between done and undone
-  const [state,setstate]=useState(true)
+  const [state,setstate]=useState([])
   //changing state to what user has typed
   const handleTask = (e)=>{
     setInput(e.target.value)
@@ -47,8 +47,9 @@ function Todo(){
         onRemove={(update)=>{
           setArr(update)
         }}
-        //when clicked the checkmark this function changes state
-        onCheck={()=>state===false?setstate(true):setstate(false)}
+        //when clicked the cheecks if id of element is present in list,if its there then removes it else adds it
+        onCheck={(id)=>state.includes(id)===false?setstate([...state,id]):setstate(state.slice(0,[...state].indexOf(id)).concat(state.slice([...state].indexOf(id)+1,[...state].length)))
+        }        
         //the changed state is passed to child component for it to know the button has pressed or not so it could render html based on condition 
         flip={state}
         />
@@ -64,6 +65,7 @@ function List(props){
   const removeElement = (index)=>{
     const newlist = props.todos.filter((no,i)=>i!==index)
     props.onRemove(newlist)
+    props.onCheck(index)
   }
   //changes color if check and calls parent function (oncheck) which switches states between true and false
   const taskDone = (e)=>{
@@ -73,14 +75,15 @@ function List(props){
     else{
       e.target.style.color = ""
     }
-    props.onCheck()
+    props.onCheck(Number(e.target.id))
   }
     //map is used to modify elements and return html
     //conditional rendering is used to check state of parent(flip) and if its false (or the check is clicked) the task is crossed
+    console.log(props.todos)
     const listItems = props.todos.map((task,index)=>(
       <li id={index} className='task'>     
       <p id="label">
-      {props.flip? <span>{index+1}.  {task}</span>:<span style={{textDecoration: 'line-through',color:'grey'}}>{index+1}.  {task}</span>}
+      {props.flip.includes(index)?<span style={{textDecoration: 'line-through',color:'grey'}}>{index+1}.  {task}</span>: <span>{index+1}.  {task}</span>}
       </p>
       <FontAwesomeIcon icon={faCheck} className="check" id={index} onClick={taskDone}/>
       <FontAwesomeIcon icon={faTrash} className="trash" id={index} onClick={() => removeElement(index)}/>
@@ -99,3 +102,4 @@ function List(props){
 
 
 export default App;
+
